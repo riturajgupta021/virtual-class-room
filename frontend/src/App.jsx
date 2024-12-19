@@ -1,13 +1,12 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import Register from './Components/Register'
 import './App.css'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import HomePage from './Components/HomePage'
 import VideoPage from './Components/VideoPage'
+import Login from './Components/Login'
 
 function App() {
-  const [count, setCount] = useState(0)
+
   const router = createBrowserRouter([
     {
       path:"/",
@@ -16,6 +15,14 @@ function App() {
     {
       path:"/room/:id",
       element: <VideoPage/>
+    },
+    {
+      path:"/login",
+      element: <Login/>
+    },
+    {
+      path:"/register",
+      element: <Register/>
     }
   ])
 
