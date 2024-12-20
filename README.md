@@ -21,7 +21,7 @@ Welcome to the Virtual Classroom project! This project aims to provide an online
     cd virtual-classroom
     ```
     ```bash
-    cd forntend
+    cd frontend
     ```
 3. Install dependencies:
     ```bash
