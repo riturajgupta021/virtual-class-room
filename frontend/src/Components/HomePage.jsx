@@ -1,14 +1,18 @@
-import  { useState ,useEffect} from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "../style/home.css";
-
+import meet1 from "../img/meet1.jpg";
+import meet2 from "../img/meet2.jpg";
+import meet3 from "../img/meet3.jpg";
+import vc from "../img/v-classroom_logo.png";
 const HomePage = () => {
   const [input, setInput] = useState("");
   const [currentIndex, setCurrentIndex] = useState(0);
+  const navigate = useNavigate();
   const images = [
-    { src: "meet1.jpg", alt: "Illustration 1" },
-    { src: "meet2.jpg", alt: "Illustration 2" },
-    { src: "meet3.jpg", alt: "Illustration 3" },
+    { src: meet1, alt: "Illustration 1" },
+    { src: meet2, alt: "Illustration 2" },
+    { src: meet3, alt: "Illustration 3" },
   ];
 
   const paragraphs = [
@@ -41,8 +45,19 @@ const HomePage = () => {
     );
   };
   const [currentTime, setCurrentTime] = useState(new Date());
+
+  const checkToken = () =>{
+    const token = localStorage.getItem("token");
+    
+    if (!token) {
+      navigate("/login");
+    }
+  }
+
+
   useEffect(() => {
     const timer = setInterval(() => setCurrentTime(new Date()), 1000);
+    checkToken();
     return () => clearInterval(timer);
   }, []);
 
@@ -60,14 +75,14 @@ const HomePage = () => {
     <div>
       <div>
         <header>
-        <div className="logo">
-          <img src="v-classroom_logo.png" alt="Virtual Classroom Logo" />
-          <span>Virtual Classroom</span>
-        </div>
-        <div className="time">
-          {currentTime.toLocaleTimeString()} &bull;{" "}
-          {currentTime.toDateString()}
-        </div>
+          <div className="logo">
+            <img src={vc} alt="Virtual Classroom Logo" />
+            <span>Virtual Classroom</span>
+          </div>
+          <div className="time">
+            {currentTime.toLocaleTimeString()} &bull;{" "}
+            {currentTime.toDateString()}
+          </div>
         </header>
 
         <main>
@@ -78,15 +93,16 @@ const HomePage = () => {
               ClassRoom
             </p>
 
-            <div className="buttons">
-              <div className="input-box">
+            <div className="buttons ">
+              <div className="input-box " style={{ display: "flex",width:"100%" ,alignItems:"center",justifyContent:"center"}}> 
                 <input
+                style={{width:"100%"}}
                   type="text"
                   placeholder="Enter your name"
                   value={input}
                   onChange={(e) => setInput(e.target.value)}
                 />
-                <button onClick={Submitbutton}>Join</button>
+                <button onClick={Submitbutton} style={{marginBottom:"10px"}}>Join</button>
               </div>
             </div>
           </div>
@@ -138,9 +154,8 @@ const HomePage = () => {
               {images.map((_, index) => (
                 <div
                   key={index}
-                  className={`blue-button ${
-                    currentIndex === index ? "active-blue-button" : ""
-                  }`}
+                  className={`blue-button ${currentIndex === index ? "active-blue-button" : ""
+                    }`}
                 ></div>
               ))}
             </div>

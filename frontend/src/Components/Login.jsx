@@ -39,12 +39,13 @@ const Login = () => {
       });
 
       if (response.ok) {
-        await response.json();
+        const userData = await response.json();
         setUserData({
           ...userData,
           email: "",
           password: "",
         });
+        localStorage.setItem("token", userData.token)
         setLoading(false)
         toast.success("Login Successfully")
         navigate("/")

@@ -41,10 +41,11 @@ const Register = () => {
                 });
 
                 if (response.ok) {
-                     await response.json();
+                     const userData = await response.json();
                     setLoading(false)
                     setLoading(false)
                     action.resetForm()
+                    localStorage.setItem("token", JSON.stringify(userData.token))
                     toast.success("Registration Successfully")
                     navigate("/")
                 } else {
