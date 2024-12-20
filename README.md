@@ -20,6 +20,9 @@ Welcome to the Virtual Classroom project! This project aims to provide an online
     ```bash
     cd virtual-classroom
     ```
+    ```bash
+    cd forntend
+    ```
 3. Install dependencies:
     ```bash
     npm install
@@ -29,7 +32,7 @@ Welcome to the Virtual Classroom project! This project aims to provide an online
 
 1. Start the development server:
     ```bash
-    npm start
+    npm run dev
     ```
 2. Open your browser and go to `http://localhost:5173`.
 
@@ -43,4 +46,4 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 ## Contact
 
-For any questions or feedback, please reach out to us at support@virtualclassroom.com.
+For any questions or feedback, please reach out to us at riturajgupta021@gmail.com.
