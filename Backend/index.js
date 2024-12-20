@@ -9,7 +9,7 @@ app.use(express.json())
 
 app.use("/api" , userRouter)
 
-app.listen(3500, () => {
+app.listen(process.env.PORT, () => {
     db()
     console.log(`Server is running on http://localhost:3500`)
 })
